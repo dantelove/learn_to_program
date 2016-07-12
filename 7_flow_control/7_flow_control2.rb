@@ -1,34 +1,32 @@
-#flow_control2_2.rb
+#7_flow_control2_1.rb
 
-#complicated grandma
+#grandma extended
 
 #conditions:
 #3 byes to exit
 #upcased inputs get "Not since (year)" response
 #non-upcased inputs get "Speak up" response
 
-puts "Say something to Grandma"
 bye_count = 0
 
 while true
 
+  puts "Say something to Grandma:"
   ans = gets.chomp
 
-  if ans == "Bye".upcase
-    bye_count += 1
-  else
-    bye_count = 0
-  end
+  bye_count += 1 if ans == "BYE"
 
-  if bye_count >= 3
-    puts "Bye-Bye Cupcake!".upcase
-    break
-  end
+  bye_count = 0 if ans != "BYE"
 
-  if ans != ans.upcase 
-    puts "Huh! Speak Up, Sonny!".upcase
-  else
-    puts "No, not since #{rand(1930..1950)}!"
-  end
-    
+  puts "Bye, Sweetie!!".upcase if bye_count > 2
+
+  break if bye_count > 2
+
+  puts "Huh!? Speak up Sonny".upcase if ans != ans.upcase
+
+  puts "But you just got here!".upcase if ans == "BYE" && bye_count < 3
+
+  puts "Not since #{rand(1930..1950)}!" if ans == ans.upcase && ans != "BYE"
+
 end
+
